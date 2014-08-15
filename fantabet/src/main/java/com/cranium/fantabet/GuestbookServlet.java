@@ -19,6 +19,7 @@ package com.cranium.fantabet;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.google.inject.Singleton;
 
 import java.io.IOException;
 
@@ -26,19 +27,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@Singleton
 public class GuestbookServlet extends HttpServlet {
-  @Override
-  public void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws IOException {
+	private static final long serialVersionUID = 7920802906242478511L;
 
-    UserService userService = UserServiceFactory.getUserService();
-    User currentUser = userService.getCurrentUser();
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
 
-    if (currentUser != null) {
-      resp.setContentType("text/plain");
-      resp.getWriter().println("Hello, " + currentUser.getNickname());
-    } else {
-      resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
-    }
-  }
+		UserService userService = UserServiceFactory.getUserService();
+		User currentUser = userService.getCurrentUser();
+
+		if (currentUser != null) {
+			resp.setContentType("text/plain");
+			resp.getWriter().println("Hello, " + currentUser.getNickname());
+		} else {
+			resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+		}
+	}
 }
