@@ -1,0 +1,27 @@
+.btn-res {
+  width:50px;
+}
+
+p {
+	padding-top: 10px;
+	
+}
+
+p.game{
+	font-size: large;
+}
+
+div.inline { 
+	float:left; 
+	width: 53px;
+	text-align: center;
+	font-size: large;
+ }
+
+span.result{
+	font-size: large;
+}
+
+span.match{
+	font-size: large;
+}

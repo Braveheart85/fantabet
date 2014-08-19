@@ -1,0 +1,19 @@
+
+td.up {
+	border-bottom: black solid 1px;
+}
+td.paid {
+  	background : lightblue;
+	border: black solid 1px;
+
+}
+
+td.notPaid {
+  background : white;
+  border: black solid 1px;
+  
+}
+
+p {
+	padding-top: 10px;
+}
