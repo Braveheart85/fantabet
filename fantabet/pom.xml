@@ -67,6 +67,12 @@
 			<version>${appengine.target.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-labs</artifactId>
+			<version>${appengine.target.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 		<!-- Objectify -->
 		<dependency>
@@ -87,13 +93,29 @@
 			<version>3.0</version>
 		</dependency>
 
-		<!-- pdfbox -->
+		<!-- Pdfbox -->
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox-app</artifactId>
 			<version>1.8.6</version>
 		</dependency>
 
+		<!-- Utilities -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>1.7.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>0.11.6</version>
+		</dependency>
 
 	</dependencies>
 
