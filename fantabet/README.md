@@ -1,6 +1,9 @@
 App Engine Java Guestbook
 Copyright (C) 2010-2012 Google Inc.
 
+## Install lombok.
+Occorre eseguire il jar di lombok che si trova nel repository di Maven essendo stata scaricata come dipendenza.
+
 ## Sample guestbook for use with App Engine Java.
 
 Requires [Apache Maven](http://maven.apache.org) 3.0 or greater, and JDK 6+ in order to run.
