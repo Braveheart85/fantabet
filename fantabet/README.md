@@ -3,6 +3,7 @@ Copyright (C) 2010-2012 Google Inc.
 
 ## Install lombok.
 Occorre eseguire il jar di lombok che si trova nel repository di Maven essendo stata scaricata come dipendenza.
+Se si riscontrano problemi occorre lanciare il jar da riga di comando java -jar lombok.jar.
 
 ## Sample guestbook for use with App Engine Java.
 
