@@ -8,16 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 
 import com.cranium.fantabet.SignGuestbookServlet;
 import com.cranium.fantabet.TestServlet;
-import com.cranium.fantabet.contextobjectify.Transact;
-import com.cranium.fantabet.contextobjectify.TransactInterceptor;
-import com.google.appengine.tools.appstats.AppstatsFilter;
-import com.google.appengine.tools.appstats.AppstatsServlet;
-import com.google.common.collect.Maps;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;
-import com.google.inject.matcher.Matchers;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.google.inject.servlet.ServletModule;
 import com.googlecode.objectify.ObjectifyFilter;
@@ -34,18 +28,18 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 		@Override
 		protected void configureServlets() {
 			super.configureServlets();
-			
-			Map<String, String> appstatsFilterParams = Maps.newHashMap();
-			appstatsFilterParams.put("logMessage",
-					"Appstats: /admin/appstats/details?time={ID}");
-			appstatsFilterParams.put("calculateRpcCosts", "true");
-			
-			filter("/*").through(AppstatsFilter.class, appstatsFilterParams);
+//			
+//			Map<String, String> appstatsFilterParams = Maps.newHashMap();
+//			appstatsFilterParams.put("logMessage",
+//					"Appstats: /admin/appstats/details?time={ID}");
+//			appstatsFilterParams.put("calculateRpcCosts", "true");
+//			
+//			filter("/*").through(AppstatsFilter.class, appstatsFilterParams);
 			filter("/*").through(ObjectifyFilter.class);
 			
 			serve("/sign").with(SignGuestbookServlet.class);
 			serve("/test").with(TestServlet.class);
-			serve("/appstats/*").with(AppstatsServlet.class);
+//			serve("/appstats/*").with(AppstatsServlet.class);
 		}
 	}
 
@@ -59,14 +53,14 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 		@Override
 		protected void configure() {
 
-			// Lets us use @Transact
-			bindInterceptor(Matchers.any(),
-					Matchers.annotatedWith(Transact.class),
-					new TransactInterceptor());
+//			// Lets us use @Transact
+//			bindInterceptor(Matchers.any(),
+//					Matchers.annotatedWith(Transact.class),
+//					new TransactInterceptor());
 
 			// External things that don't have Guice annotations
-			bind(AppstatsFilter.class).in(Singleton.class);
-			bind(AppstatsServlet.class).in(Singleton.class);
+//			bind(AppstatsFilter.class).in(Singleton.class);
+//			bind(AppstatsServlet.class).in(Singleton.class);
 			bind(ObjectifyFilter.class).in(Singleton.class);
 		}
 	}
