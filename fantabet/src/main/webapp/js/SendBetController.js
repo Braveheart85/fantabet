@@ -30,8 +30,9 @@ function SendBetController() {
    
    
    var RetrieveOddsCallback = function() {
-		this.onSuccess = function(){
+		this.onSuccess = function(data){
 			console.log("QUOTE RECUPERATE CON SUCCESSO")
+			view.updateMatchList(data);
 		}
 		this.onFailure = function(){
 			console.log("Error RetrieveOddsCallback")
