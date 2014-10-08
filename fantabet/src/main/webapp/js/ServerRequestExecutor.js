@@ -5,7 +5,6 @@ function ServerRequestExecutor() {
 		$.ajax({
 			url : 'test',
 			data : {},
-
 			type : 'get',
 			success : callback.onSuccess,
 			error:	callback.onFailure

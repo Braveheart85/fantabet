@@ -3,60 +3,60 @@ function SendBetView() {
 	var controller,
 	
 	
-//	buttonsGroupSelector = "#btngroup",
-//	buttonsGroupHtml = "<div id='btngroup'></div>",
-	
-	
-	
-	
 	sendBetButtonSelector = "#sendBetButton",
-	sendBetButtonHtml = '<a id = "sendBetButton" class="btn btn-lg btn-primary" onclick="sendBet()" role="button">Invia &raquo;</a>'//"<button id='sendBetButton'>Invia giocata</button>";
+	sendBetButtonId = "sendBetButton",
+	sendBetButtonHtml = '<a id = "' + sendBetButtonId + '" class="btn btn-lg btn-primary" role="button">Invia &raquo;</a>',
 
 	
 	
-	matchListContainerId = "matchListContainer"
-	matchListContainerSelector = "#matchListContainer"
+	matchListContainerId = "matchListContainer",
+	matchListContainerSelector = "#matchListContainer",
 	
 	
 	
+	matchListId = "matchList",
+	matchListSelector = "#matchList",
 	
-	
-	
+	winAmountTextBoxId = "winAmountTextBox",
+	winAmountTextBoxSelector = "#winAmountTextBox",
 	
 	pageTemplate = 
 
-
-'	<div class="container">' +
-
-'		<div class="panel panel-default">' +
-'			<div class="panel-body">' +
-'				<h2 align="center">Invia Giocata</h2>' +
-'			</div>' +
-'		</div>' +
-
-'		<div class="panel panel-default">' +
-'			<div class="panel-body">' +
-'				<div align="center">' +
-'					<p>Completa la giocata e inviala</p>' +
-'				</div>' +
-'			</div>' +
-'		</div>' +
-
-'		<div class="panel panel-default">' +
-'			<div class="panel-body">' +
-'				<div id = "' + matchListContainerId + '" align="center">' +
-
-'					<div class="input-group">' +
-'						<h3 style="align: center;">La tua giocata</h3>' +
-'						<input type="text" class="form-control" value="0" id="amount" readonly>' +
-'					</div>' +
-'					<p>' +
-						sendBetButtonHtml + 
-'					</p>' +
-'				</div>' +
-'			</div>' +
-'		</div>';
-'	</div>',
+	'<div class="container">' +
+	
+	'	<div class="panel panel-default">' +
+	'		<div class="panel-body">' +
+	'			<h2 align="center">Invia Giocata</h2>' +
+	'		</div>' +
+	'	</div>' +
+	
+	'	<div class="panel panel-default">' +
+	'		<div class="panel-body">' +
+	'			<div align="center">' +
+	'				<p>Completa la giocata e inviala</p>' +
+	'			</div>' +
+	'		</div>' +
+	'	</div>' +
+	
+	'	<div class="panel panel-default">' +
+	'		<div class="panel-body">' +
+	'			<div id = "' + matchListContainerId + '" align="center">' +
+	'				<!--ELENCO DEGLI EVENTI E RELATIVE QUOTE-->' +
+	
+	'				<!--AMMONTARE DELLA GIOCATA-->' +
+	'				<div class="input-group">' +
+	'					<h3 style="align: center;">La tua giocata</h3>' +
+	'					<input id="' + winAmountTextBoxId + '" type="text" class="form-control" value="0" readonly>' +
+	'				</div>' +
+	
+	'				<!--BUTTON DI INVIO GIOCATA-->' +
+	'				<p>' +
+							sendBetButtonHtml + 
+	'				</p>' +
+	'			</div>' +
+	'		</div>' +
+	'	</div>';
+	'</div>',
 
 
 
@@ -119,7 +119,7 @@ function SendBetView() {
 
 	matchListTemplate = 
 	'<table class="table">' + 
-	'	<tbody>' + 
+	'	<tbody id ="' + matchListId + '">' + 
 	'		<tr>' + 
 	'			<td width="50%" align="right">' + 
 	'				<p>' + 
@@ -138,36 +138,9 @@ function SendBetView() {
 	'				</p></div>' + 
 	'			</td>' + 
 	'		</tr>' + 
-	'		<!--QUI VA LA SINGOLA PARTITA PIU QUOTE -->' + 
+	'		<!--EVENTO E RELATIVE QUOTE -->' + 
 	'	</tbody>' + 
 	'</table>',		
-	
-	
-	
-	matchTemplate = 
-	'		<tr>' +
-	'			<td width="50%" align="right">' +
-	'				<p class="game">Roma - Lazio</p>' +
-	'			</td>' +
-	'			<td width="50%" align="left">' +
-	'				<button id="11" onclick="calculateTotal(11)" value="10.5"' +
-	'					type="button" class="btn btn-default btn-res">10.5</button>' +
-	'				<button id="12" onclick="calculateTotal(12)" value="5"' +
-	'					type="button" class="btn btn-default btn-res">5</button>' +
-	'				<button id="13" onclick="calculateTotal(13)" value="1.08"' +
-	'					type="button" class="btn btn-default btn-res">1.08</button>' +
-	'			</td>' +
-	'		</tr>';
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
 	
 	
 	
@@ -185,12 +158,9 @@ function SendBetView() {
 	}
 
 	
-	
-	var betTemplate = "Template della sezione dedicata alla visualizzazione delle partite";
-
 	this.init = function() {
 		populateSections();
-		bindButtons();
+		__bindSendBetButtonId();
     };
     
    
@@ -202,31 +172,104 @@ function SendBetView() {
    var populateSections = function(){
 	   $('body').append(menu);
 	   $('body').append(pageTemplate);
-//	   $('body').append(matchListTemplate);
-//	   $(buttonsGroupSelector).append(sendBetButtonHtml);
-   }
-   
-	var bindButtons = function(){
-		$(sendBetButtonSelector).off();
-		$(sendBetButtonSelector).on("click", function() {
-			controller.sendBet();
-		});
-	}
-   
-   this.getBet = function(){
-	   return "La bet è questa";
 	   
    }
    
+//	var bindButtons = function(){
+//		$(sendBetButtonSelector).off();
+//		$(sendBetButtonSelector).on("click", function() {
+//			controller.sendBet();
+//		});
+//	}
    
    this.updateMatchList = function(data){
-	   console.log(myToString(data));
+	   
+	   $(matchListContainerSelector).prepend(matchListTemplate);
+	   var bettableEvents = data.bettableEvents;
+	   var currentEvent;
+	   var currentMatchHtml;
+	   for (var i = 0, len = bettableEvents.length; i < len; i++) {
+		   currentEvent = bettableEvents[i];
+		   currentMatchHtml = 
+		   		   
+				'		<tr id="' + currentEvent.eventId + '">' +
+				'			<td width="50%" align="right">' +
+				'				<p class="game">' + currentEvent.homeTeam + ' - ' + currentEvent.awayTeam + '</p>' +
+				'			</td>' +
+				'			<td width="50%" align="left">' +
+								getAllSingleBetsHtml(currentEvent.singleBets, "#" + currentEvent.eventId);
+				'			</td>' +
+				'		</tr>';
+	   
+	 
+		   
+		   $(matchListSelector).append(currentMatchHtml);
+		   
+	   }
 	   
    }
    
    
-   //PER GESTIRE PIU' DI UN BUTTON
-//   document.getElementById("btngroup").addEventListener(
+   
+   var getAllSingleBetsHtml = function(singleBets, eventSelector){
+	   var allSingleBetHtml = "";
+	   var singleBetHtml
+	   var singleBet;
+	   
+	   for (var i = 0, len = singleBets.length; i < len; i++) {
+		   singleBet = singleBets[i];
+		   singleBetHtml = 
+			'				<button id="' + singleBet.id + '" value="' + singleBet.odd + '"' +
+			'					type="button" class="btn btn-default btn-res">' + singleBet.odd + '</button>';
+		   allSingleBetHtml += singleBetHtml;
+		   
+		   __bindSingleBetButton('#' + singleBet.id, eventSelector);
+		   
+	   }
+	   return allSingleBetHtml;
+   }
+   
+   
+   
+   var __bindSingleBetButton = function(singleBetSelector, eventSelector) {
+	   $(singleBetSelector).off() 
+	   $(document).on( "click", singleBetSelector, function(event, ui) {
+		   var odd = $(singleBetSelector).val();
+		   colorButton(singleBetSelector, eventSelector);
+		   controller.calculateTotal(singleBetSelector, eventSelector);
+	   });	
+   }
+
+   
+   var __bindSendBetButtonId = function() {
+	   $(sendBetButtonSelector).off() 
+	   $(document).on( "click", sendBetButtonSelector,function(event, ui) {
+		   controller.sendBet();	
+	   })
+   }
+
+   var colorButton = function(singleBetSelector, eventSelector) {
+		var color1 = "white";
+		var color2 = "lightblue";
+		var buttons = $(eventSelector + " " + "button");
+		for (var i = 0, len = buttons.length; i < len; i++) {
+			buttons[i].style.background = color1;
+		}
+		$(singleBetSelector).get(0).style.background = color2;
+	}
+   
+   
+   
+   this.setWinAmount = function(winAmount){
+	   $(winAmountTextBoxSelector).get(0).value = winAmount;
+   }
+   
+   
+   this.getCurrentOdd = function(buttonSelector){
+	   return $(buttonSelector).get(0).value;
+   }
+//	PER GESTIRE PIU' DI UN BUTTON
+//  document.getElementById("btngroup").addEventListener(
 //		   "click", 
 //		   function (event) {
 //	   			switch (event.srcElement.id) {

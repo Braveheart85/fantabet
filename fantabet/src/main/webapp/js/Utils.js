@@ -7,3 +7,22 @@
 			}
 		return result
 	}	
+	
+	
+	function printArray(bettedMatches) {
+
+		for ( var key in bettedMatches) {
+			if (bettedMatches.hasOwnProperty(key)) {
+				alert(key + " -> " + bettedMatches[key]);
+			}
+		}
+	}
+	
+	
+	function getIdFromSelector(selector){
+		return selector.substring(1, selector.length);
+	}
+
+	function getSelectorFromId(id){
+		return "#" + id;
+	}

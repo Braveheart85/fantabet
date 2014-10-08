@@ -16,12 +16,12 @@ public class Bet {
 
 	@Id	@Getter		private Long id;
 	@Load			private Ref<Person> better;
-	@Load			private List<Ref<SingleBet>> singleBets = new ArrayList<Ref<SingleBet>>();
+	@Load			private List<Ref<SingleBetVO>> singleBets = new ArrayList<Ref<SingleBetVO>>();
 	
 	public Bet(Person better) {
 		this.better = Ref.create(better);
 	}
 	
 	public Person getBetter() { return Deref.deref(better); }
-	public List<SingleBet> getBets() { return Deref.deref(singleBets); }
+	public List<SingleBetVO> getBets() { return Deref.deref(singleBets); }
 }

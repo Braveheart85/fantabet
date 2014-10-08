@@ -5,7 +5,7 @@ import com.cranium.fantabet.model.FantaBetDay;
 import com.cranium.fantabet.model.SportEvent;
 import com.cranium.fantabet.model.Person;
 import com.cranium.fantabet.model.Ranking;
-import com.cranium.fantabet.model.SingleBet;
+import com.cranium.fantabet.model.SingleBetVO;
 import com.cranium.fantabet.model.Tournament;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
@@ -18,7 +18,7 @@ public class OfyService {
         factory().register(SportEvent.class);
         factory().register(Person.class);
         factory().register(Ranking.class);
-        factory().register(SingleBet.class);
+        factory().register(SingleBetVO.class);
         factory().register(Tournament.class);
     }
 
