@@ -14,9 +14,12 @@ function ServerRequestExecutor() {
 
 	this.executeRequestWithData = function(data, callback){
 		console.log("Richiesta al server");
+		var result = data.toJSON();
+//		console.log(result);
+//		console.log(data.toJSON());
 		$.ajax({
 			url : 'test',
-			data :	data,
+			data :	{"data" : result},
 			type : 'get',
 			success : callback.onSuccess,
 			error:	callback.onFailure
@@ -26,7 +29,39 @@ function ServerRequestExecutor() {
 		
 		
 		
-		
+//	var myJsonParse = function(data){
+//		var result = "";
+//		for(var propertyName in data) {
+//			var method = propertyName;
+//			if (method.substring(0,3)=="get"){
+//				
+//				
+//				
+//				var part = data[propertyName].call()
+//				
+//				
+//				if (typeof part !== "string" && 
+//					typeof part !== "boolean" &&
+//					typeof part !== "numeric"){
+//					
+//					console.log("str\n")
+//					result += propertyName.substring(3, propertyName.length) + " : " + part + ",";
+//				}
+//				
+//				else if (part instanceof Array){
+//					console.log("arr\n")
+//					for (var i = 0, len = part.length; i < len; i++) {
+//						result += myJsonParse(part[i]);
+//					}
+//				}
+//				else { 
+//					console.log("obj\n")
+//					result += myJsonParse(part);
+//				}
+//			}
+//		}
+//		console.log(result)
+//	}	
 		
 		
 		

@@ -183,21 +183,20 @@ function SendBetView() {
 //	}
    
    this.updateMatchList = function(data){
-	   
 	   $(matchListContainerSelector).prepend(matchListTemplate);
-	   var bettableEvents = data.bettableEvents;
+	   var bettableEvents = data.getBettableEvents();
 	   var currentEvent;
 	   var currentMatchHtml;
 	   for (var i = 0, len = bettableEvents.length; i < len; i++) {
 		   currentEvent = bettableEvents[i];
 		   currentMatchHtml = 
 		   		   
-				'		<tr id="' + currentEvent.eventId + '">' +
+				'		<tr id="' + currentEvent.getId() + '">' +
 				'			<td width="50%" align="right">' +
-				'				<p class="game">' + currentEvent.homeTeam + ' - ' + currentEvent.awayTeam + '</p>' +
+				'				<p class="game">' + currentEvent.getHomeTeam() + ' - ' + currentEvent.getAwayTeam() + '</p>' +
 				'			</td>' +
 				'			<td width="50%" align="left">' +
-								getAllSingleBetsHtml(currentEvent.singleBets, "#" + currentEvent.eventId);
+								getAllSingleBetsHtml(currentEvent.getSingleBets(), "#" + currentEvent.getId());
 				'			</td>' +
 				'		</tr>';
 	   
@@ -219,11 +218,10 @@ function SendBetView() {
 	   for (var i = 0, len = singleBets.length; i < len; i++) {
 		   singleBet = singleBets[i];
 		   singleBetHtml = 
-			'				<button id="' + singleBet.id + '" value="' + singleBet.odd + '"' +
-			'					type="button" class="btn btn-default btn-res">' + singleBet.odd + '</button>';
+			'				<button id="' + singleBet.getId() + '" value="' + singleBet.getOdd() + '"' +
+			'					type="button" class="btn btn-default btn-res">' + singleBet.getOdd() + '</button>';
 		   allSingleBetHtml += singleBetHtml;
-		   
-		   __bindSingleBetButton('#' + singleBet.id, eventSelector);
+		   __bindSingleBetButton('#' + singleBet.getId(), eventSelector);
 		   
 	   }
 	   return allSingleBetHtml;
@@ -234,7 +232,7 @@ function SendBetView() {
    var __bindSingleBetButton = function(singleBetSelector, eventSelector) {
 	   $(singleBetSelector).off() 
 	   $(document).on( "click", singleBetSelector, function(event, ui) {
-		   var odd = $(singleBetSelector).val();
+		   //var odd = $(singleBetSelector).val();
 		   colorButton(singleBetSelector, eventSelector);
 		   controller.calculateTotal(singleBetSelector, eventSelector);
 	   });	

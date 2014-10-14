@@ -5,7 +5,7 @@ import java.util.List;
 public class EventVO {
 	private String homeTeam;
 	private String awayTeam;
-	private String eventId;
+	private String id;
 	private List<SingleBetVO> singleBets;
 	private SingleBetVO bet;
 	public String getHomeTeam() {
@@ -20,11 +20,11 @@ public class EventVO {
 	public void setAwayTeam(String awayTeam) {
 		this.awayTeam = awayTeam;
 	}
-	public String getEventId() {
-		return eventId;
+	public String getId() {
+		return id;
 	}
-	public void setEventId(String eventId) {
-		this.eventId = eventId;
+	public void setId(String eventId) {
+		this.id = eventId;
 	}
 	public List<SingleBetVO> getSingleBets() {
 		return singleBets;

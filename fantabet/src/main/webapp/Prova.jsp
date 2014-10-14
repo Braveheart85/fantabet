@@ -7,10 +7,12 @@
         <script src="/js/jquery-1.11.1.min.js"></script>
         <script src="/js/SendBetView.js"></script>
         <script src="/js/SendBetModel.js"></script>
+        <script src="/js/Bet.js"></script>
+        <script src="/js/SingleBet.js"></script>
+        <script src="/js/Event.js"></script>
         <script src="/js/SendBetController.js"></script>
         <script src="/js/ServerRequestExecutor.js"></script>
         <script src="/js/Utils.js"></script>
-        
         
 		
 		

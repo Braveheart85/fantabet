@@ -3,18 +3,17 @@ package com.cranium.fantabet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cranium.fantabet.model.EventVO;
 import com.cranium.fantabet.model.BetVO;
+import com.cranium.fantabet.model.EventVO;
 import com.cranium.fantabet.model.SingleBetVO;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
 import com.google.gson.Gson;
 import com.google.inject.Singleton;
 
@@ -27,7 +26,23 @@ public class TestServlet extends HttpServlet{
 		try {
 		//Get OBJECT from request
 		Object data = request.getParameter("data");
-		System.out.println("data: " + data);
+		String dataString = request.getParameter("data");
+//		JSONObject myObject = new JSONObject(data);	
+			
+		 Gson gson = new Gson();
+		 BetVO bet = gson.fromJson(dataString, BetVO.class);
+		    
+//		    bet.getBettableEvents().get(0).getHomeTeam()
+//		    bet.getBettableEvents().get(0).getAwayTeam()
+//		    bet.getBettableEvents().get(0).getId()
+//		    bet.getBettableEvents().get(0).getSingleBets().get(0).getId()
+//		    bet.getBettableEvents().get(0).getSingleBets().get(0).getOdd()
+//		    bet.getBettableEvents().get(0).getSingleBets().get(0).getResult()
+//		    bet.getChampionshipDayId()
+//		    bet.getChampionshipDayName()
+//		    bet.getUserId()
+
+		 System.out.println("data: " + data);
 
 		
 		//Create an object containing all others objects
@@ -54,13 +69,13 @@ public class TestServlet extends HttpServlet{
 		EventVO event = new EventVO();
 		event.setHomeTeam("Juve");
 		event.setAwayTeam("Roma");
-		event.setEventId("event001");
+		event.setId("event001");
 		event.setSingleBets(singleBets);
 
 		EventVO event2 = new EventVO();
 		event2.setHomeTeam("Milan");
 		event2.setAwayTeam("Napoli");
-		event2.setEventId("event002");
+		event2.setId("event002");
 		event2.setSingleBets(singleBets2);
 		
 		

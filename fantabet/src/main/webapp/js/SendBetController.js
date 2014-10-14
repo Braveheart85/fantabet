@@ -30,7 +30,7 @@ function SendBetController() {
 	   
    this.sendBet = function(data) {
 		var bet = model.getBet();
-		console.log(myToString(bet));
+		console.log("sendBet");
 		var callback = new SendBetCallback();
 		serverRequestExecutor.executeRequestWithData(bet, callback);
 	}
@@ -39,7 +39,20 @@ function SendBetController() {
    var RetrieveOddsCallback = function() {
 		this.onSuccess = function(data){
 			console.log("QUOTE RECUPERATE CON SUCCESSO");
-			view.updateMatchList(data);
+			model.setBet(data);
+			var bet = model.getBet();
+//			console.log((bet.getBettableEvents()[0].getSingleBets()[0].getOdd()))
+//			console.log((bet.getBettableEvents()[0].getSingleBets()[1].getOdd()))
+//			console.log((bet.getBettableEvents()[0].getSingleBets()[2].getOdd()))
+//			console.log((bet.getBettableEvents()[1].getSingleBets()[0].getOdd()))
+//			console.log((bet.getBettableEvents()[1].getSingleBets()[1].getOdd()))
+//			console.log((bet.getBettableEvents()[1].getSingleBets()[2].getOdd()))
+			
+			
+			
+			
+			
+			view.updateMatchList(bet);
 		}
 		this.onFailure = function(){
 			console.log("Error RetrieveOddsCallback");
@@ -61,9 +74,11 @@ function SendBetController() {
 
 
 	this.calculateTotal = function(singleBetSelector, eventSelector) {
-		var currentOdd = view.getCurrentOdd(singleBetSelector);
-		model.updateBet(getIdFromSelector(eventSelector),
-				getIdFromSelector(singleBetSelector), currentOdd);
+		//var currentOdd = view.getCurrentOdd(singleBetSelector);
+//		console.log("singleBetSelector: " + singleBetSelector + " - " + "eventSelector: " + eventSelector)
+//		console.log("getIdFromSelector(eventSelector): " + getIdFromSelector(eventSelector) + " - " + "getIdFromSelector(singleBetSelector): " + getIdFromSelector(singleBetSelector))
+		model.setSingleBet(getIdFromSelector(eventSelector), getIdFromSelector(singleBetSelector));
+//		alert("calculateTotal")
 		var winAmount = model.getWinAmount();
 		view.setWinAmount(winAmount);
 		
