@@ -184,19 +184,19 @@ function SendBetView() {
    
    this.updateMatchList = function(data){
 	   $(matchListContainerSelector).prepend(matchListTemplate);
-	   var bettableEvents = data.getBettableEvents();
+	   var bettableEvents = data.bettableEvents;
 	   var currentEvent;
 	   var currentMatchHtml;
 	   for (var i = 0, len = bettableEvents.length; i < len; i++) {
 		   currentEvent = bettableEvents[i];
 		   currentMatchHtml = 
 		   		   
-				'		<tr id="' + currentEvent.getId() + '">' +
+				'		<tr id="' + currentEvent.id + '">' +
 				'			<td width="50%" align="right">' +
-				'				<p class="game">' + currentEvent.getHomeTeam() + ' - ' + currentEvent.getAwayTeam() + '</p>' +
+				'				<p class="game">' + currentEvent.homeTeam + ' - ' + currentEvent.awayTeam + '</p>' +
 				'			</td>' +
 				'			<td width="50%" align="left">' +
-								getAllSingleBetsHtml(currentEvent.getSingleBets(), "#" + currentEvent.getId());
+								getAllSingleBetsHtml(currentEvent.singleBets, "#" + currentEvent.id);
 				'			</td>' +
 				'		</tr>';
 	   
@@ -218,10 +218,10 @@ function SendBetView() {
 	   for (var i = 0, len = singleBets.length; i < len; i++) {
 		   singleBet = singleBets[i];
 		   singleBetHtml = 
-			'				<button id="' + singleBet.getId() + '" value="' + singleBet.getOdd() + '"' +
-			'					type="button" class="btn btn-default btn-res">' + singleBet.getOdd() + '</button>';
+			'				<button id="' + singleBet.id + '" value="' + singleBet.odd + '"' +
+			'					type="button" class="btn btn-default btn-res">' + singleBet.odd + '</button>';
 		   allSingleBetHtml += singleBetHtml;
-		   __bindSingleBetButton('#' + singleBet.getId(), eventSelector);
+		   __bindSingleBetButton('#' + singleBet.id, eventSelector);
 		   
 	   }
 	   return allSingleBetHtml;

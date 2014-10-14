@@ -39,8 +39,9 @@ function SendBetController() {
    var RetrieveOddsCallback = function() {
 		this.onSuccess = function(data){
 			console.log("QUOTE RECUPERATE CON SUCCESSO");
+			//console.log("sendBet" + JSON.stringify(data))
 			model.setBet(data);
-			var bet = model.getBet();
+			
 //			console.log((bet.getBettableEvents()[0].getSingleBets()[0].getOdd()))
 //			console.log((bet.getBettableEvents()[0].getSingleBets()[1].getOdd()))
 //			console.log((bet.getBettableEvents()[0].getSingleBets()[2].getOdd()))
@@ -52,7 +53,7 @@ function SendBetController() {
 			
 			
 			
-			view.updateMatchList(bet);
+			view.updateMatchList(data);
 		}
 		this.onFailure = function(){
 			console.log("Error RetrieveOddsCallback");

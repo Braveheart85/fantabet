@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.cranium.fantabet.model.BetVO;
 import com.cranium.fantabet.model.EventVO;
 import com.cranium.fantabet.model.SingleBetVO;
-import com.google.appengine.labs.repackaged.org.json.JSONObject;
 import com.google.gson.Gson;
 import com.google.inject.Singleton;
 
@@ -25,7 +24,6 @@ public class TestServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		//Get OBJECT from request
-		Object data = request.getParameter("data");
 		String dataString = request.getParameter("data");
 //		JSONObject myObject = new JSONObject(data);	
 			
@@ -42,7 +40,6 @@ public class TestServlet extends HttpServlet{
 //		    bet.getChampionshipDayName()
 //		    bet.getUserId()
 
-		 System.out.println("data: " + data);
 
 		
 		//Create an object containing all others objects

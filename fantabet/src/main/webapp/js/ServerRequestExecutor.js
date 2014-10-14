@@ -14,12 +14,15 @@ function ServerRequestExecutor() {
 
 	this.executeRequestWithData = function(data, callback){
 		console.log("Richiesta al server");
-		var result = data.toJSON();
-//		console.log(result);
-//		console.log(data.toJSON());
+//		var data2 = {
+//				"data" : data
+//		}
+//		console.log(JSON.stringify(data2))
+		var jsonData = JSON.stringify(data);
+		
 		$.ajax({
 			url : 'test',
-			data :	{"data" : result},
+			data :	{"data" : jsonData},
 			type : 'get',
 			success : callback.onSuccess,
 			error:	callback.onFailure
