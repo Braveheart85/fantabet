@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+	
+			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+        <script src="/js/jquery-1.11.1.min.js"></script>
+        <script src="/js/ranking/RankingView.js"></script>
+        <script src="/js/ranking/RankingModel.js"></script>
+        <script src="/js/ranking/RankingController.js"></script>
+        <script src="/js/ServerRequestExecutor.js"></script>
+        <script src="/js/Utils.js"></script>
+        <script src="/js/model/Bet.js"></script>
+        <script src="/js/model/SingleBet.js"></script>
+        <script src="/js/model/Event.js"></script>
+        
+		
+		
+		
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/navbar.css" rel="stylesheet">
+        
+        
+
+		 <script type="text/javascript">
+			var view = new RankingView();
+		 	var controller = new RankingController();
+		 	var model = new RankingModel();
+		 	var serverRequestExecutor = new ServerRequestExecutor();
+		 	
+		 	view.initComponents(controller);
+		 	controller.initComponents(view, model, serverRequestExecutor);
+		 	
+		 	/* è la stessa cosa di mettere l'attributo onload al body 
+		 	$(function() {
+		 		controller.init();
+		 	}); */
+		 	
+        </script>
+
+		<title>Classifiche</title>
+		
+		
+	<body onload="controller.init()">
+
+	
+	
+	</body>
+</html>

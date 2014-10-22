@@ -8,10 +8,8 @@ function SendBetView() {
 	sendBetButtonHtml = '<a id = "' + sendBetButtonId + '" class="btn btn-lg btn-primary" role="button">Invia &raquo;</a>',
 
 	
-	
 	matchListContainerId = "matchListContainer",
 	matchListContainerSelector = "#matchListContainer",
-	
 	
 	
 	matchListId = "matchList",
@@ -79,13 +77,13 @@ function SendBetView() {
 	'			</div>' +
 	'			<div class="navbar-collapse collapse">' +
 	'				<ul class="nav navbar-nav">' +
-	'					<li><a href="inviaGiocata.jsp">Invia Giocata</a></li>' +
-	'					<li><a href="classifiche.jsp">Classifiche</a></li>' +
-	'					<li><a href="storicoGiocate.jsp">Storico Giocate</a></li>' +
+	'					<li><a href="inviaGiocata.html">Invia Giocata</a></li>' +
+	'					<li><a href="classifiche.html">Classifiche</a></li>' +
+	'					<li><a href="storicoGiocate.html">Storico Giocate</a></li>' +
 	'					<li><a href="regolamento.html">Regolamento</a></li>' +
-	'					<li><a href="pagamenti.jsp">Pagamenti</a></li>' +
+	'					<li><a href="pagamenti.html">Pagamenti</a></li>' +
 	'					<li><a href="contatti.html">Contatti</a></li>' +
-	'					<li><a href="bachecaInsulti.jpg">Bacheca Insulti</a></li>' +
+	'					<li><a href="bachecaInsulti.html">Bacheca Insulti</a></li>' +
 	'				<!--<li class="dropdown"><a href="#" class="dropdown-toggle"' +
 	'						data-toggle="dropdown">Dropdown <span class="caret"></span></a>' +
 	'						<ul class="dropdown-menu" role="menu">' +
@@ -140,7 +138,7 @@ function SendBetView() {
 	'		</tr>' + 
 	'		<!--EVENTO E RELATIVE QUOTE -->' + 
 	'	</tbody>' + 
-	'</table>',		
+	'</table>';	
 	
 	
 	
@@ -175,12 +173,6 @@ function SendBetView() {
 	   
    }
    
-//	var bindButtons = function(){
-//		$(sendBetButtonSelector).off();
-//		$(sendBetButtonSelector).on("click", function() {
-//			controller.sendBet();
-//		});
-//	}
    
    this.updateMatchList = function(data){
 	   $(matchListContainerSelector).prepend(matchListTemplate);
@@ -261,23 +253,6 @@ function SendBetView() {
    this.setWinAmount = function(winAmount){
 	   $(winAmountTextBoxSelector).get(0).value = winAmount;
    }
-   
-   
-   this.getCurrentOdd = function(buttonSelector){
-	   return $(buttonSelector).get(0).value;
-   }
-//	PER GESTIRE PIU' DI UN BUTTON
-//  document.getElementById("btngroup").addEventListener(
-//		   "click", 
-//		   function (event) {
-//	   			switch (event.srcElement.id) {
-//	   				case "btn1": handleClick();
-//	   				break; 
-//	   				default: handleClick; 
-//	   			}
-//	   		}, 
-//	   		false); // type, listener, useCapture (true=beginning, false=end)
-//   
    
     
 }
